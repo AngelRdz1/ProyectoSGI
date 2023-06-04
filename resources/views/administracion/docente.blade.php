@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Docentes</title>
+    <title>{{ $titulo}}</title>
 @endsection
 @section('titulo')
 {{ $titulo}}
