@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\GradoController;
 use App\Http\Controllers\DocenteController;
+use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\SeguimientoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +34,14 @@ Route::post('grados/update', [GradoController::class, 'update'])->name('grado.up
 Route::get('docente/index', [DocenteController::class, 'index'])->name('docente.index');
 Route::get('docente/index/data', [DocenteController::class, 'data'])->name('docente.index.data');
 Route::post('docente/upload-csv', [DocenteController::class, 'uploadCSV'])->name('docente.upload.csv');
+
+Route::get('estudiante/index', [EstudianteController::class, 'index'])->name('estudiante.index');
+Route::get('estudiante/index/data', [EstudianteController::class, 'data'])->name('estudiante.index.data');
+Route::post('estudiante/upload-csv', [EstudianteController::class, 'uploadCSV'])->name('estudiante.upload.csv');
+
+Route::get('materia/index', [MateriaController::class, 'index'])->name('materia.index');
+Route::get('materia/index/data', [MateriaController::class, 'data'])->name('materia.index.data');
+Route::post('materia/upload-csv', [MateriaController::class, 'uploadCSV'])->name('materia.upload.csv');
+
+Route::get('seguimiento/index', [SeguimientoController::class, 'index'])->name('seguimiento.index');
+Route::get('seguimiento/index/data', [SeguimientoController::class, 'data'])->name('seguimiento.index.data');
