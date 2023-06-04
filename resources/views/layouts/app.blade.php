@@ -36,7 +36,7 @@
                                                         class="d-none d-sm-inline text-dark">Docentes</span></a>
                                             </li>
                                             <li>
-                                                <a href="#" class="nav-link px-2"> <span
+                                                <a href="{{route('estudiante.index')}}" class="nav-link px-2"> <span
                                                         class="d-none d-sm-inline text-dark">Estudiantes</span></a>
                                             </li>
                                             <li>
@@ -44,7 +44,7 @@
                                                         class="d-none d-sm-inline text-dark">Grados</span></a>
                                             </li>
                                             <li>
-                                                <a href="#" class="nav-link px-2"> <span
+                                                <a href="{{route('materia.index')}}" class="nav-link px-2"> <span
                                                         class="d-none d-sm-inline text-dark">Materias</span></a>
                                             </li>
                                             <li>
@@ -86,7 +86,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0 align-middle">
+                                    <a href="{{route('seguimiento.index')}}" class="nav-link px-0 align-middle">
                                         <span class="text-dark ms-1 d-none d-sm-inline">Seguimiento</span>
                                     </a>
                                 </li>

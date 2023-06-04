@@ -12,7 +12,7 @@
                         aria-label="Close"></button>
             </label>
         </div>
-        <div class="table-responsive">
+        <div>
             <table class="table table-striped table-bordered table-hover"
                    id="datatable" style="width:100%">
                 <thead class="table-dark">
