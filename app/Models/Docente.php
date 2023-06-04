@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Docente extends Model
 {
@@ -15,15 +16,7 @@ class Docente extends Model
         'nombre'
     ];
 
-    public function user() {
-        return $this->hasOne(User::class);
-    }
-
-    public function materia() {
-        return $this->hasOne(Materia::class);
-    }
-
-    public function grado() {
-        return $this->hasOne(Grado::class);
+    public static function getData(){
+        return DB::select('SELECT d.nombre, d.id FROM docentes d');
     }
 }

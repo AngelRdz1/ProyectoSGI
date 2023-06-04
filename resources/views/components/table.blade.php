@@ -1,28 +1,22 @@
 <div class="card card-docs mb-2">
     <div class="card-body fs-8 fs-xxl-6 py-5 px-5 text-gray-700">
-        @if(session('success'))
-            <div class="row">
-                <div class="col-sm-12 px-3 py-1">
-                    <div class="alert alert-success text-center">
-                        {!! session('success') !!}
-                    </div>
-                </div>
-            </div>
-        @endif
-        @if(session('fail'))
-            <div class="row">
-                <div class="col-sm-12 px-3 py-1">
-                    <div class="alert alert-danger text-center">
-                        {!! session('fail') !!}
-                    </div>
-                </div>
-            </div>
-        @endif
+        <div class="text-center">
+            <label class="alert alert-danger col-md-9 error" id="gnlError" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+            </label>
+        </div>
+        <div class="text-center">
+            <label class="alert alert-success col-md-9 error" id="gnlSuccess" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+            </label>
+        </div>
         <div class="table-responsive">
-            <table class="table table-row-bordered table-striped table-bordered table-hover"
+            <table class="table table-striped table-bordered table-hover"
                    id="datatable" style="width:100%">
                 <thead class="table-dark">
-                <tr class="fw-bold text-gray-800 border-bottom text-center border-gray-500">
+                <tr class="fw-bold">
                     {{$thead}}
                 </tr>
                 </thead>

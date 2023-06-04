@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GradoController;
+use App\Http\Controllers\DocenteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', function () {
-//    return view('welcome');
+//    return view('welcome'); uploadCSV
 //});
 Route::get('/home', function () {
     return view('home');
@@ -26,3 +27,7 @@ Route::get('grados/index/data', [GradoController::class, 'data'])->name('grados.
 Route::post('grados/edit', [GradoController::class, 'edit'])->name('grado.edit');
 Route::post('grados/store', [GradoController::class, 'store'])->name('grado.store');
 Route::post('grados/update', [GradoController::class, 'update'])->name('grado.update');
+
+Route::get('docente/index', [DocenteController::class, 'index'])->name('docente.index');
+Route::get('docente/index/data', [DocenteController::class, 'data'])->name('docente.index.data');
+Route::post('docente/upload-csv', [DocenteController::class, 'uploadCSV'])->name('docente.upload.csv');

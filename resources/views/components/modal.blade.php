@@ -10,7 +10,7 @@
                 <div class="modal-body" id="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <div align="center">
+                            <div class="text-center">
                                 <label class="alert alert-danger col-md-9 error" id="gnlError" role="alert">
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                             aria-label="Close"></button>
@@ -25,9 +25,9 @@
                 <div class="modal-footer" id="modal-footer">
                     <input type="hidden" name="id" id="id" value="">
                     <input type="hidden" name="action_type" id="action_type" value="">
-                    <button type="submit" id="formSubmit" class="btn btn-danger">{{__('Submit')}}</button>
+                    <button type="submit" id="formSubmit" class="btn btn-danger">Guardar</button>
                     <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">{{__('Close')}}</button>
+                            data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </form>
         </div>
