@@ -5,11 +5,11 @@
 @section('content')
     @component('components.table')
         @slot('thead')
-            <th>{{ __('Grado') }}</th>
-            <th>{{ __('Sección') }} </th>
-            <th>{{ __('Niños') }} </th>
-            <th>{{ __('Niñas') }} </th>
-            <th>{{ __('Docente') }}</th>
+            <th>Grado</th>
+            <th>Sección</th>
+            <th>Niños</th>
+            <th>Niñas</th>
+            <th>Docente</th>
         @endslot
     @endcomponent
     @component('components.modal')
@@ -44,6 +44,8 @@
 @section('footer_scripts')
     <script>
         $(function() {
+            $("#gnlError").hide();
+            $("#gnlSuccess").hide();
             var total_columns = $("#datatable thead").find("tr")[0].cells.length;
             var initialLoad = false;
             var table = $('#datatable').DataTable({
@@ -77,7 +79,9 @@
                         orientation: 'landscape',
                     }
                 ],*/
-
+                language: {
+                    url: '{{ asset('Spanish.json') }}'
+                },
                 initComplete: function() {
                     table = $('#datatable').DataTable();
                     new $.fn.dataTable.Buttons(table, {
