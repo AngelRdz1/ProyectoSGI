@@ -94,7 +94,11 @@
                         </div>
                     </div>
                     <div class="col py-3 bg-primary bg-opacity-10 text-dark">
-                        
+                        <div class="card card-docs mb-3">
+                            <div class="card-body fs-8 fs-xxl-4 py-3 px-5 text-gray-700">
+                                <h1>@yield('titulo')</h1>
+                            </div>
+                        </div>
                         @yield('content')
                     </div>
                 </div>

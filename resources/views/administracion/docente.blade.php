@@ -3,6 +3,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Docentes</title>
 @endsection
+@section('titulo')
+{{ $titulo}}
+@endsection
 @section('content')
     @component('components.table')
         @slot('thead')
