@@ -16,7 +16,8 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        return view('administracion.docente');
+        $titulo = 'Docentes';
+        return view('administracion.docente',compact('titulo'));
     }
 
     public function data(Request $request)

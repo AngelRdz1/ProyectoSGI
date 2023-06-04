@@ -18,7 +18,8 @@ class GradoController extends Controller
     public function index()
     {
         $profesores = Docente::all();
-        return view('administracion.grados',compact('profesores'));
+        $titulo = 'Grados';
+        return view('administracion.grados',compact('profesores','titulo'));
     }
 
     public function data(Request $request)
