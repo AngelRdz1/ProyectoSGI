@@ -18,8 +18,6 @@ class GradoController extends Controller
     public function index()
     {
         $profesores = Docente::all();
-        $x = Grado::getData();
-        //dd($x);
         return view('administracion.grados',compact('profesores'));
     }
 

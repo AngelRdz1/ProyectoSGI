@@ -55,15 +55,15 @@
                 responsive: true,
                 "dom": "<'row'" +
                     "<'col-sm-12 d-flex align-items-center justify-content-start'l>" +
-                    "<'col-sm-6 d-flex align-items-center justify-content-start'B>" +
-                    "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                   // "<'col-sm-6 d-flex align-items-center justify-content-start'B>" +
+                    "<'col-sm-12 d-flex align-items-center justify-content-end'f>" +
                     ">" +
                     "<'table-responsive'tr>" +
                     "<'row'" +
                     "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
                     "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
                     ">",
-                buttons: [{
+               /* buttons: [{
                         extend: 'excelHtml5',
                         text: '<i class="fa fa-file-excel"></i>',
                         titleAttr: 'Exportar a Excel',
@@ -76,7 +76,7 @@
                         className: 'btn btn-danger',
                         orientation: 'landscape',
                     }
-                ],
+                ],*/
 
                 initComplete: function() {
                     table = $('#datatable').DataTable();
