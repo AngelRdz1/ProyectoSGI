@@ -13,7 +13,8 @@
             </label>
         </div>
         <div>
-            <table class="table table-striped table-bordered table-hover"
+            {{$tituloTabla ?? ''}}
+            <table class="table table-sm"
                    id="datatable" style="width:100%">
                 <thead class="table-dark">
                 <tr class="fw-bold">

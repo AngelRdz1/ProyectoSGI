@@ -63,9 +63,8 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="" class="nav-link px-0 align-middle" data-bs-toggle="collapse">
-                                        <span class="text-dark ms-1 d-none d-sm-inline">Reportes</span>
-                                    </a>
+                                    <a href="{{route('reportes.index')}}" class="nav-link px-0 align-middle">
+                                        <span class="text-dark ms-1 d-none d-sm-inline">Reportes</span></a>
                                 </li>
                                 <li>
                                     <a href="#adminUsuarios" class="nav-link px-0 align-middle"
