@@ -24,6 +24,10 @@ class Materia extends Model
                           JOIN docentes d ON m.docente_id = d.id');
     }
 
+    public static function getHeaderMateria(){
+        return DB::select('SELECT nombre FROM materias');
+    }
+
     public function docente() {
         return $this->belongsTo(Docente::class);
     }

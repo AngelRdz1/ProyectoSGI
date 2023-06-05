@@ -25,6 +25,24 @@ class Boleta extends Model
                           JOIN users u ON b.user_id = u.id');
     }
 
+    public static function getAnios(){
+        return DB::select('SELECT DISTINCT anio FROM boletas');
+    }
+
+    public static function getGrados(){
+        return DB::select('SELECT DISTINCT g.numero AS grado
+                            FROM evaluaciones e
+                            JOIN boletas b ON e.boleta_id = b.id
+                            JOIN grados g ON b.grado_id = g.id');
+    }
+
+    public static function getSecciones(){
+        return DB::select('SELECT DISTINCT g.seccion
+                            FROM evaluaciones e
+                            JOIN boletas b ON e.boleta_id = b.id
+                            JOIN grados g ON b.grado_id = g.id');
+    }
+
     public function evaluaciones() {
         return $this->hasMany(Evaluacion::class);
     }

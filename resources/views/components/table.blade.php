@@ -14,14 +14,14 @@
         </div>
         <div>
             {{$tituloTabla ?? ''}}
-            <table class="table table-sm"
-                   id="datatable" style="width:100%">
+            <table class="table table-sm" id="datatable" style="width:100%">
                 <thead class="table-dark">
                 <tr class="fw-bold">
-                    {{$thead}}
+                    {{$thead ?? ''}}
                 </tr>
                 </thead>
                 <tbody>
+                    {{$tbody ?? ''}}
                 </tbody>
             </table>
         </div>
