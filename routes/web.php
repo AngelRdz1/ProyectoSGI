@@ -5,6 +5,8 @@ use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\SeguimientoController;
+use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\ReportePromedioFinalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,3 +47,6 @@ Route::post('materia/upload-csv', [MateriaController::class, 'uploadCSV'])->name
 
 Route::get('seguimiento/index', [SeguimientoController::class, 'index'])->name('seguimiento.index');
 Route::get('seguimiento/index/data', [SeguimientoController::class, 'data'])->name('seguimiento.index.data');
+
+Route::get('reportes/index', [ReportesController::class, 'index'])->name('reportes.index');
+Route::get('reportes/reportepromediofinal/index', [ReportesController::class, 'indexPromedioFinal'])->name('reportes.reportepromediofinal.index');
