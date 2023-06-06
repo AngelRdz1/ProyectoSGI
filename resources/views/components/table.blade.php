@@ -12,8 +12,8 @@
                         aria-label="Close"></button>
             </label>
         </div>
-        <div>
-            <table class="table table-sm" id="datatable" style="width:100%">
+        <div class="table-container">
+            <table class="table table-sm display nowrap" id="datatable" style="width:100%; font-size: 14px;">
                 <thead class="table-dark">
                     <tr class="fw-bold">
                         {{$thead ?? ''}}
