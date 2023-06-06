@@ -13,12 +13,11 @@
             </label>
         </div>
         <div>
-            {{$tituloTabla ?? ''}}
             <table class="table table-sm" id="datatable" style="width:100%">
                 <thead class="table-dark">
-                <tr class="fw-bold">
-                    {{$thead ?? ''}}
-                </tr>
+                    <tr class="fw-bold">
+                        {{$thead ?? ''}}
+                    </tr>
                 </thead>
                 <tbody>
                     {{$tbody ?? ''}}
