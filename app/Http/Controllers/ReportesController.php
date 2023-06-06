@@ -42,8 +42,9 @@ class ReportesController extends Controller
                 foreach ($headers as $header) {
                     $total = 0;
                     $contador = 0;
+                    $promedio = 0;
                     foreach ($notas as $nota) {
-                        if (strtolower($nota->mes) == 'enero' && $nota->nie_estudiante == $estudiante->nie_estudiante) {
+                        if (strtolower($nota->mes) !== 'enero' && $nota->nombre_materia == $header->nombre && $nota->nie_estudiante == $estudiante->nie_estudiante) {
                             $total += $nota->nota;
                             $contador++;
                         }

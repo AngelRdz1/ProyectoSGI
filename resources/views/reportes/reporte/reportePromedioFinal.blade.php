@@ -63,13 +63,13 @@
             </form>
         </div>
         <hr>
-        <div>
-            <table class="table table-sm" id="datatable" style="width:100%">
+        <div class="table-container">
+            <table class="table table-sm" id="datatable" style="width:100%; font-size: 14px;">
                 <thead class="table-dark">
                     <tr class="fw-bold">
-                        <td>Estudiante</td>
+                        <th>Estudiante</th>
                         @foreach ($headers as $header)
-                            <td>{{ $header->nombre }}</td>
+                            <th>{{ $header->nombre }}</th>
                         @endforeach
                     </tr>
                 </thead>
@@ -98,6 +98,7 @@
             serverSide: false,
             stateSave: true,
             scrollX: false,
+            scrollY: '300px',
             autoWidth: false,
             responsive: true,
             dom: '<"row mb-3"<"col-sm-12 col-md-6"><"col-sm-12 col-md-6 text-md-right text-sm-center"B>>' +
