@@ -23,12 +23,12 @@ class LogBitacora
         //Verificar si el usuario está autenticado
         //if (auth()->check()) {
             // Registrar la acción en la tabla de bitácora
-            $bitacora = new Bitacora();
+            /*$bitacora = new Bitacora();
             $bitacora->user_id = 1;//auth()->user()->id;
             $bitacora->accion =  $this->getAccion($request);
             $bitacora->descripcion = $this->getDescripcion($request,"Gustavo");
             $bitacora->fecha_realizacion = now();
-            $bitacora->save();
+            $bitacora->save();*/
         //}
 
         return $response;
