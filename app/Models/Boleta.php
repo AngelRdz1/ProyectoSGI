@@ -36,4 +36,17 @@ class Boleta extends Model
     public function grado() {
         return $this->belongsTo(Grado::class);
     }
+    
+    public static function getDataBoleta($id){
+
+        $query = DB::select('SELECT e.nie, m.id as idMateria,m.nombre as nombreMateria, b.mes, SUM(eva.nota * eva.porcentaje) as sumaNotas FROM estudiantes e
+        JOIN evaluaciones eva ON e.nie = eva.nie_estudiante
+        JOIN boletas b ON eva.boleta_id = b.id
+        JOIN materias m ON eva.materia_id = m.id
+        WHERE e.nie = ?
+        GROUP BY e.nie, m.nombre, b.mes,m.id', [$id]);
+
+        //dd($query);                    
+        return $query;
+    }
 }

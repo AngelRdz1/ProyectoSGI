@@ -48,5 +48,8 @@ Route::post('materia/upload-csv', [MateriaController::class, 'uploadCSV'])->name
 Route::get('seguimiento/index', [SeguimientoController::class, 'index'])->name('seguimiento.index');
 Route::get('seguimiento/index/data', [SeguimientoController::class, 'data'])->name('seguimiento.index.data');
 
-Route::get('reportes/index', [ReportesController::class, 'index'])->name('reportes.index');
+Route::get('reportes/index', [ReportesController::class, 'index'])->name('reportes.index'); 
 Route::get('reportes/reportepromediofinal/index', [ReportesController::class, 'indexPromedioFinal'])->name('reportes.reportepromediofinal.index');
+Route::get('reportes/reporteBoletaNotas/index', [ReportesController::class, 'indexBoletaNotas'])->name('reportes.reporteBoletaNotas.index');
+Route::get('reportes/reporteBoletaNotas/data', [ReportesController::class, 'dataBoletaNotas'])->name('reportes.reporteBoletaNotas.data');
+Route::get('reportes/reporteBoletaNotas/tabla', [ReportesController::class, 'tablaBoletaNotas'])->name('reportes.reporteBoletaNotas.tabla');

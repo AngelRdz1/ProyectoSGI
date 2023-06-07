@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Boleta;
+use App\Models\Estudiante;
+use App\Models\Materia;
 use Illuminate\Http\Request;
 use DataTables;
 use League\Csv\Reader;
@@ -29,6 +31,26 @@ class ReportesController extends Controller
     {
         if ($request->ajax()) {
             $data = Boleta::getDataPromedioFinal();
+            return Datatables::of($data)
+                ->make(true);
+        }
+    }
+
+    public function indexBoletaNotas(){
+        $titulo = 'Boleta de Notas';
+        $estudiantes = Estudiante::all();
+        return view('reportes.reporte.reporteBoletaNotas',compact('titulo','estudiantes'));
+    }
+    public function tablaBoletaNotas(Request $request){
+        $datas = Boleta::getDataBoleta($request->id);
+        $materias = Materia::all();
+        return view('reportes.reporte.tablaBoleta',compact('datas','materias'));
+    }
+
+    public function dataBoletaNotas(Request $request){
+        if ($request->ajax()) {
+            $valores = Boleta::getDataBoleta($request->id);
+            $data = [];
             return Datatables::of($data)
                 ->make(true);
         }
