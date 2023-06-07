@@ -157,16 +157,21 @@
                 }
             ]
         });
-        // Cambiar el texto en los botones de exportación
-        $('.buttons-excel').text('Nombre Alternativo'); // Cambiar "Nombre Alternativo" por el texto deseado
-        $('.buttons-pdf').text('Otro Nombre'); // Cambiar "Otro Nombre" por el texto deseado
     });
     $(document).ready(function() {
         $("#btnReporteExcel").on("click", function() {
             $(".dt-button.buttons-excel").click();
+            $.ajax({
+                url: "{{ route('reportes.reportepromediofinal.excel') }}",
+                type: 'GET',
+            });
         });
         $("#btnReportePDF").on("click", function() {
             $(".dt-button.buttons-pdf").click();
+            $.ajax({
+                url: "{{ route('reportes.reportepromediofinal.pdf') }}",
+                type: 'GET',
+            });
         });
         // Capturar el evento de clic en el botón "Extraer"
         $("#btnExtraer").on("click", function(event) {
