@@ -25,8 +25,8 @@ class LogBitacora
             // Registrar la acción en la tabla de bitácora
             $bitacora = new Bitacora();
             $bitacora->user_id = 1;//auth()->user()->id;
-            $bitacora->accion = 'casa';
-            $bitacora->descripcion = 'casa';
+            $bitacora->accion =  $this->getAccion($request);
+            $bitacora->descripcion = $this->getDescripcion($request,"Gustavo");
             $bitacora->fecha_realizacion = now();
             $bitacora->save();
         //}
@@ -34,8 +34,8 @@ class LogBitacora
         return $response;
     }
 
-    //Método para obtener el nombre de la acción realizada
-    private function getNombreEvento($request){
+    //Método para obtener la acción realizada
+    private function getAccion($request){
         switch ($request->route()->getName()) {
             //Inicio al sistema
             case 'home':
@@ -69,124 +69,168 @@ class LogBitacora
             case 'usuarios.destroy':
                 return 'Eliminar Usuario';
 
-            //Tablas gerenciales
-            case 'proveedor.index':
-                return 'Ver Proveedores';
-            case 'insumo.index':
-                return 'Ver Insumos';
-            case 'empleado.index':
-                return 'Ver Empleados';
-            case 'servicio.index':
-                return 'Ver Servicios';
-            case 'venta.index':
-                return 'Ver Ventas';
-            case 'servicioInsumo.index':
-                return 'Ver Insumos por Servicio';
+            //Tablas Administración
+            case 'docente.index':
+                return 'Ver Docentes';
+            case 'estudiante.index':
+                return 'Ver Estudiantes';
+            case 'grado.index':
+                return 'Ver Grados';
+            case 'materia.index':
+                return 'Ver Materias';
+            case 'reportes.index':
+                return 'Ver Reportes';
 
-            case 'proveedor.create':
-                return 'Importar Datos para Proveedores';
-            case 'insumo.create':
-                return 'Importar Datos para Insumos';
-            case 'empleado.create':
-                return 'Importar Datos para Empleados';
-            case 'servicio.create':
-                return 'Importar Datos para Servicios';
-            case 'venta.create':
-                return 'Importar Datos para Ventas';
-            case 'servicioInsumo.create':
-                return 'Importar Datos para Insumos por Servicio';
+            //Carga de datos en administración
+            case 'docente.upload.csv':
+                return 'Carga de Docentes';
+            case 'estudiante.upload.csv':
+                return 'Carga de Estudiantes';
+            case 'grado.upload.csv':
+                return 'Carga de Grados';
+            case 'materia.upload.csv':
+                return 'Carga de Materias';          
 
-            case 'proveedor.store':
-                return 'Datos Importados en Proveedores';
-            case 'insumo.store':
-                return 'Datos Importados en Insumos';
-            case 'empleado.store':
-                return 'Datos Importados en Empleados';
-            case 'servicio.store':
-                return 'Datos Importados en Servicios';
-            case 'venta.store':
-                return 'Datos Importados en Ventas';
-            case 'servicioInsumo.store':
-                return 'Datos Importados en Insumos por Servicio';
-            
             //Reportes
-            case 'proyeccionVentas.index':
-                return 'Ver Reporte de Proyecciones de Ventas';
-            case 'margenBruto.index':
-                return 'Ver Reporte del Margen Bruto de Ventas';
-            case 'ventasEmpleado.index':
-                return 'Ver Reporte de las Ventas Realizadas por Empleado';
-            case 'tasaCrecimiento.index':
-                return 'Ver Reporte de la Tasa de Crecimiento de las Ventas ';
-            case 'ingresoServicio.index':
-                return 'Ver Reporte de Ingresos Obtenidos por Servicio';
+            case 'reportes.reporteboletanotas.index':
+                return 'Ver Reporte de Boleta de Notas';
+            case 'reportes.reporteconsolidado.index':
+                return 'Ver Reporte de Consolidado';
+            case 'reportes.reportepromedios.index':
+                return 'Ver Reporte de Promedios';
+            case 'reportes.reportepromediotrimestral.index':
+                return 'Ver Reporte de Promedio Trimestral';
+            case 'reportes.reportepromediofinal.index':
+                return 'Ver Reporte de Promedio Final';
             
+            //Descarga de reportes
+            case 'reportes.reporteboletanotas.pdf':
+                return 'Descargar Reporte de Boleta de Notas';
+            case 'reportes.reporteboletanotas.excel':
+                return 'Descargar Reporte de Boleta de Notas';
+            case 'reportes.reporteconsolidado.pdf':
+                return 'Descargar Reporte de Consolidado';
+            case 'reportes.reporteconsolidado.excel':
+                return 'Descargar Reporte de Consolidado';
+            case 'reportes.reportepromedios.pdf':
+                return 'Descargar Reporte de Promedios';
+            case 'reportes.reportepromedios.excel':
+                return 'Descargar Reporte de Promedios';
+            case 'reportes.reportepromediotrimestral.pdf':
+                return 'Descargar Reporte de Promedio Trimestral';
+            case 'reportes.reportepromediotrimestral.excel':
+                return 'Descargar Reporte de Promedio Trimestral';
+            case 'reportes.reportepromediofinal.pdf':
+                return 'Descargar Reporte de Promedio Final';
+            case 'reportes.reportepromediofinal.excel':
+                return 'Descargar Reporte de Promedio Final';  
+
             //Bitacora
-            case 'bitacora.index':
+            case 'seguimiento.index':
                 return 'Ver Bitacora';
                 
             default:
-                return '';
+                return 'Recarga de Vista';
         }
     }
 
-    //Método para obtener pantalla donde se hizo la acción
-    private function getContextoEvento($request){
-        $nombresTablas = [
+    //Método para obtener la descripción de la acción realizada
+    private function getDescripcion($request, $user){
+        switch ($request->route()->getName()) {
             //Inicio al sistema
-            'home' => 'Inicio del Sitio',
-            
-            //Bitacora
-            'bitacora.index' => 'Bitacora',
+            case 'home':
+                return 'El usuario ' . $user . ' accedió al inicio.';
 
             //Roles
-            'roles.index' => 'Roles',
-            'roles.create' => 'Roles',
-            'roles.store' => 'Roles',
-            'roles.edit' => 'Roles',
-            'roles.update' => 'Roles',
-            'roles.destroy' => 'Roles',
-
+            case 'roles.index':
+                return 'El usuario ' . $user . ' accedió al listado de los roles.';
+            case 'roles.create':
+                return 'El usuario ' . $user . ' creó un nuevo rol.';
+            case 'roles.store':
+                return 'El usuario ' . $user . ' registró un rol.';
+            case 'roles.edit':
+                return 'El usuario ' . $user . ' editó un rol.';
+            case 'roles.update':
+                return 'El usuario ' . $user . ' actualizó un rol.';
+            case 'roles.destroy':
+                return 'El usuario ' . $user . ' eliminó un rol.';
+            
             //Usuarios
-            'usuarios.index' => 'Usuarios',
-            'usuarios.create' => 'Usuarios',
-            'usuarios.store' => 'Usuarios',
-            'usuarios.edit' => 'Usuarios',
-            'usuarios.update' => 'Usuarios',
-            'usuarios.destroy' => 'Usuarios',
+            case 'usuarios.index':
+                return 'El usuario ' . $user . ' accedió al listado de los usuarios.';
+            case 'usuarios.create':
+                return 'El usuario ' . $user . ' creó un nuevo usuario.';
+            case 'usuarios.store':
+                return 'El usuario ' . $user . ' registró un usuario.';
+            case 'usuarios.edit':
+                return 'El usuario ' . $user . ' editó un usuario.';
+            case 'usuarios.update':
+                return 'El usuario ' . $user . ' actualizó un usuario.';
+            case 'usuarios.destroy':
+                return 'El usuario ' . $user . ' eliminó un usuario.';
 
-            //Tablas gerenciales
-            'proveedor.index' => 'Proveedores',
-            'insumo.index' => 'Insumos',
-            'empleado.index' => 'Empleados',
-            'servicio.index' => 'Servicios',
-            'venta.index' => 'Ventas',
-            'servicioInsumo.index' => 'Insumos por Servicio',
+            //Tablas Administración
+            case 'docente.index':
+                return 'El usuario ' . $user . ' accedió al listado de los docentes.';
+            case 'estudiante.index':
+                return 'El usuario ' . $user . ' accedió al listado de los estudiantes.';
+            case 'grado.index':
+                return 'El usuario ' . $user . ' accedió al listado de los grados.';
+            case 'materia.index':
+                return 'El usuario ' . $user . ' accedió al listado de las materias.';
+            case 'reportes.index':
+                return 'El usuario ' . $user . ' accedió a los reportes.';
 
-            'proveedor.create' => 'Proveedores',
-            'insumo.create' => 'Insumos',
-            'empleado.create' => 'Empleados',
-            'servicio.create' => 'Servicios',
-            'venta.create' => 'Ventas',
-            'servicioInsumo.create' => 'Insumos por Servicio',
-
-            'proveedor.store' => 'Proveedores',
-            'insumo.store' => 'Insumos',
-            'empleado.store' => 'Empleados',
-            'servicio.store' => 'Servicios',
-            'venta.store' => 'Ventas',
-            'servicioInsumo.store' => 'Insumos por Servicio',
+            //Carga de datos en administración
+            case 'docente.upload.csv':
+                return 'El usuario ' . $user . ' cargo un archivo .csv con un listado de docentes.';
+            case 'estudiante.upload.csv':
+                return 'El usuario ' . $user . ' cargo un archivo .csv con un listado de estudiantes.';
+            case 'grado.upload.csv':
+                return 'El usuario ' . $user . ' cargo un archivo .csv con un listado de grados.';
+            case 'materia.upload.csv':
+                return 'El usuario ' . $user . ' cargo un archivo .csv con un listado de materias.';         
 
             //Reportes
-            'proyeccionVentas.index' => 'Reporte de Proyecciones de Ventas',
-            'margenBruto.index' => 'Reporte del Margen Bruto de Ventas',
-            'ventasEmpleado.index' => 'Reporte de las Ventas Realizadas por Empleado',
-            'tasaCrecimiento.index' => 'Reporte de la Tasa de Crecimiento de las Ventas ',
-            'ingresoServicio.index' => 'Reporte de Ingresos Obtenidos por Servicio',
+            case 'reportes.reporteboletanotas.index':
+                return 'El usuario ' . $user . ' accedió al reporte de boleta de notas.';
+            case 'reportes.reporteconsolidado.index':
+                return 'El usuario ' . $user . ' accedió al reporte de consolidado.';
+            case 'reportes.reportepromedios.index':
+                return 'El usuario ' . $user . ' accedió al reporte de promedios.';
+            case 'reportes.reportepromediotrimestral.index':
+                return 'El usuario ' . $user . ' accedió al reporte de promedio trimestral.';
+            case 'reportes.reportepromediofinal.index':
+                return 'El usuario ' . $user . ' accedió al reporte de promedio final.';
+            
+            //Descarga de reportes
+            case 'reportes.reporteboletanotas.pdf':
+                return 'El usuario ' . $user . ' descargo el reporte de boleta de notas en un archivo de pdf.';
+            case 'reportes.reporteboletanotas.excel':
+                return 'El usuario ' . $user . ' descargo el reporte de boleta de notas en un archivo de excel.';
+            case 'reportes.reporteconsolidado.pdf':
+                return 'El usuario ' . $user . ' descargo el reporte de consolidado en un archivo de pdf.';
+            case 'reportes.reporteconsolidado.excel':
+                return 'El usuario ' . $user . ' descargo el reporte de consolidado en un archivo de excel.';
+            case 'reportes.reportepromedios.pdf':
+                return 'El usuario ' . $user . ' descargo el reporte de promedios en un archivo de pdf.';
+            case 'reportes.reportepromedios.excel':
+                return 'El usuario ' . $user . ' descargo el reporte de promedios en un archivo de excel.';
+            case 'reportes.reportepromediotrimestral.pdf':
+                return 'El usuario ' . $user . ' descargo el reporte de promedio trimestral en un archivo de pdf.';
+            case 'reportes.reportepromediotrimestral.excel':
+                return 'El usuario ' . $user . ' descargo el reporte de promedio trimestral en un archivo de excel.';
+            case 'reportes.reportepromediofinal.pdf':
+                return 'El usuario ' . $user . ' descargo el reporte de promedio final en un archivo de pdf.';
+            case 'reportes.reportepromediofinal.excel':
+                return 'El usuario ' . $user . ' descargo el reporte de promedio final en un archivo de excel.';
 
-        ];
-        $nombreTabla = $nombresTablas[$request->route()->getName()] ?? '';
-        return $nombreTabla;
+            //Bitacora
+            case 'seguimiento.index':
+                return 'El usuario ' . $user . ' accedió a la bitacora.';
+                
+            default:
+                return 'El usuario ' . $user . ' se le recargó la vista para la actualización de los datos.';
+        }
     }
-
 }
