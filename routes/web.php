@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComportamientoController;
 use App\Http\Controllers\GradoController;
 use App\Http\Controllers\DocenteController;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,7 @@ Route::post('grados/update', [GradoController::class, 'update'])->name('grado.up
 Route::get('docente/index', [DocenteController::class, 'index'])->name('docente.index');
 Route::get('docente/index/data', [DocenteController::class, 'data'])->name('docente.index.data');
 Route::post('docente/upload-csv', [DocenteController::class, 'uploadCSV'])->name('docente.upload.csv');
+
+Route::get('comportamientos/index', [ComportamientoController::class, 'index'])->name('comportamientos.index');
+Route::get('comportamientos/index/data', [ComportamientoController::class, 'data'])->name('comportamientos.data');
+Route::post('comportamientos/upload-csv', [ComportamientoController::class, 'uploadCSV'])->name('comportamiento.upload.csv');
