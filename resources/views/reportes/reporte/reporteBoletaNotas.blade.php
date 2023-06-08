@@ -16,7 +16,7 @@
                     <select class="form-control" id="idEstudiante">
                         @foreach ($estudiantes as $estudiante)
                             <option value="{{ $estudiante->nie }}">{{ $estudiante->nombre }}</option>
-                        @endforeach()
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-4 mb-4">
