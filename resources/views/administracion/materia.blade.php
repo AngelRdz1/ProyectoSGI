@@ -9,14 +9,15 @@
 @section('content')
     @component('components.table')
         @slot('thead')
-            <th>ID</th>
+            <th class="d-none">Id</th>
             <th>Nombre</th>
+            <th>Docente</th>
         @endslot
     @endcomponent
     @component('components.modal')
         @slot('bodyForm')
-            <label>Docentes CSV</label>
-            <input type="file" id="docenteCsv" class="form-control" name="docenteCsv">
+            <label>Materia CSV</label>
+            <input type="file" id="materiaCsv" class="form-control" name="materiaCsv">
         @endslot
     @endcomponent
 @endsection
@@ -58,19 +59,21 @@
                 order: [
                     [total_columns - 1, "desc"]
                 ],
-                ajax: '{!! route('docente.index.data') !!}',
-                columns: [{
-                        data: null,
+                ajax: '{!! route('materia.index.data') !!}',
+                columns: [
+                    {
+                        data: 'id',
                         name: 'id',
-                        render: function(data, type, row, meta) {
-                            var numero = meta.row + 1;
-                            return numero;
-                        }
+                        className: 'd-none',
                     },
                     {
                         data: 'nombre',
                         name: 'nombre',
-                    }
+                    },
+                    {
+                        data: 'nombre_docente',
+                        name: 'nombre_docente',
+                    },
                 ]
             });
             //Abrir modal para agregar
@@ -83,23 +86,23 @@
                 $('#FormModal #modal-body #name').val('');
 
                 $('#FormModal #modal-footer #action_type').val('store');
-                $('#modal-title').text('Agregar Docentes');
-                $('#docenteCsv').val('');
+                $('#modal-title').text('Agregar Materias');
+                $('#materiaCsv').val('');
             });
             //guardar
             $("#AForm").validate({
                 rules: {
-                    docenteCsv: {
+                    materiaCsv: {
                         "required": true
                     }
                 },
                 messages: {
-                    docenteCsv: {
+                    materiaCsv: {
                         required: "El campo es requerido"
                     }
                 },
                 submitHandler: function(form) {
-                    var url = '{{ route('docente.upload.csv') }}';
+                    var url = '{{ route('materia.upload.csv') }}';
                     var formData = new FormData(
                         form); // Crear objeto FormData para enviar el formulario
 

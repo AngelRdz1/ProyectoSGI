@@ -9,14 +9,17 @@
 @section('content')
     @component('components.table')
         @slot('thead')
-            <th>ID</th>
+            <th>NIE</th>
             <th>Nombre</th>
+            <th>Número Lista</th>
+            <th>Grado</th>
+            <th>Sección</th>
         @endslot
     @endcomponent
     @component('components.modal')
         @slot('bodyForm')
-            <label>Docentes CSV</label>
-            <input type="file" id="docenteCsv" class="form-control" name="docenteCsv">
+            <label>Estudiante CSV</label>
+            <input type="file" id="estudianteCsv" class="form-control" name="estudianteCsv">
         @endslot
     @endcomponent
 @endsection
@@ -58,19 +61,28 @@
                 order: [
                     [total_columns - 1, "desc"]
                 ],
-                ajax: '{!! route('docente.index.data') !!}',
-                columns: [{
-                        data: null,
-                        name: 'id',
-                        render: function(data, type, row, meta) {
-                            var numero = meta.row + 1;
-                            return numero;
-                        }
+                ajax: '{!! route('estudiante.index.data') !!}',
+                columns: [
+                    {
+                        data: 'nie',
+                        name: 'nie',
                     },
                     {
                         data: 'nombre',
                         name: 'nombre',
-                    }
+                    },
+                    {
+                        data: 'numero_lista',
+                        name: 'numero_lista',
+                    },
+                    {
+                        data: 'numero',
+                        name: 'numero',
+                    },
+                    {
+                        data: 'seccion',
+                        name: 'seccion',
+                    },
                 ]
             });
             //Abrir modal para agregar
@@ -83,23 +95,23 @@
                 $('#FormModal #modal-body #name').val('');
 
                 $('#FormModal #modal-footer #action_type').val('store');
-                $('#modal-title').text('Agregar Docentes');
-                $('#docenteCsv').val('');
+                $('#modal-title').text('Agregar Estudiantes');
+                $('#estudianteCsv').val('');
             });
             //guardar
             $("#AForm").validate({
                 rules: {
-                    docenteCsv: {
+                    estudianteCsv: {
                         "required": true
                     }
                 },
                 messages: {
-                    docenteCsv: {
+                    estudianteCsv: {
                         required: "El campo es requerido"
                     }
                 },
                 submitHandler: function(form) {
-                    var url = '{{ route('docente.upload.csv') }}';
+                    var url = '{{ route('estudiante.upload.csv') }}';
                     var formData = new FormData(
                         form); // Crear objeto FormData para enviar el formulario
 

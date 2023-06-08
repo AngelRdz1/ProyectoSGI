@@ -36,7 +36,7 @@
                                                         class="d-none d-sm-inline text-dark">Docentes</span></a>
                                             </li>
                                             <li>
-                                                <a href="#" class="nav-link px-2"> <span
+                                                <a href="{{route('estudiante.index')}}" class="nav-link px-2"> <span
                                                         class="d-none d-sm-inline text-dark">Estudiantes</span></a>
                                             </li>
                                             <li>
@@ -44,7 +44,7 @@
                                                         class="d-none d-sm-inline text-dark">Grados</span></a>
                                             </li>
                                             <li>
-                                                <a href="#" class="nav-link px-2"> <span
+                                                <a href="{{route('materia.index')}}" class="nav-link px-2"> <span
                                                         class="d-none d-sm-inline text-dark">Materias</span></a>
                                             </li>
                                             <li>
@@ -63,9 +63,8 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="" class="nav-link px-0 align-middle" data-bs-toggle="collapse">
-                                        <span class="text-dark ms-1 d-none d-sm-inline">Reportes</span>
-                                    </a>
+                                    <a href="{{route('reportes.index')}}" class="nav-link px-0 align-middle">
+                                        <span class="text-dark ms-1 d-none d-sm-inline">Reportes</span></a>
                                 </li>
                                 <li>
                                     <a href="#adminUsuarios" class="nav-link px-0 align-middle"
@@ -86,7 +85,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0 align-middle">
+                                    <a href="{{route('seguimiento.index')}}" class="nav-link px-0 align-middle">
                                         <span class="text-dark ms-1 d-none d-sm-inline">Seguimiento</span>
                                     </a>
                                 </li>
@@ -110,7 +109,6 @@
     </html>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
