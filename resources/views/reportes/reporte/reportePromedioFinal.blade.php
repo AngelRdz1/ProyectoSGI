@@ -1,143 +1,199 @@
-@component('components.table')
-    @slot('tituloTabla')
-        <p>Hola</p>
-    @endslot
-    @slot('thead')
-        <th class="d-none">Id</th>
-        <th>Nombre</th>
-        <th>Docente</th>
-    @endslot
-@endcomponent
-@component('components.modal')
-    @slot('bodyForm')
-        <label>Materia CSV</label>
-        <input type="file" id="materiaCsv" class="form-control" name="materiaCsv">
-    @endslot
-@endcomponent
+<div class="card" id="tablaPromedioFinal">
+    <div class="fs-8 fs-xxl-6 py-5 px-5 text-gray-700">
+        <div class="row">
+            <form id="formPromedioFinal" action="" method="GET">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="mb-4">Filtros</h5>
+                        <div class="row col-md-12 align-items-end">
+                            <!-- Año -->
+                            <div class="form-group col-md-2 mb-2">
+                                <label for="Periodo">Año</label>
+                                <select class="form-select" id="anio" name="anio" required>
+                                    <option value="">Seleccione el año</option>
+                                    @foreach ($anios as $eAnio)
+                                        <option value="{{ $eAnio->anio }}" {{ old('anio', $request->anio) == $eAnio->anio ? 'selected' : '' }}>
+                                            {{ $eAnio->anio }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- Grado -->
+                            <div class="form-group col-md-2 mb-2">
+                                <label for="Grado">Grado</label>
+                                <select class="form-select" id="grado" name="grado" required>
+                                    <option value="">Seleccione el grado</option>
+                                    @foreach ($grados as $eGrado)
+                                        <option value="{{ $eGrado->grado }}" {{ old('grado', $request->grado) == $eGrado->grado ? 'selected' : '' }}>
+                                            {{ $eGrado->grado }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- Seccion -->
+                            <div class="form-group col-md-2 mb-2">
+                                <label for="Seccion">Sección</label>
+                                <select class="form-select" id="seccion" name="seccion" required>
+                                    <option value="">Seleccione la sección</option>
+                                    @foreach ($secciones as $eSeccion)
+                                        <option value="{{ $eSeccion->seccion }}" {{ old('seccion', $request->seccion) == $eSeccion->seccion ? 'selected' : '' }}>
+                                            {{ $eSeccion->seccion }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- Boton -->
+                            <div class="form-group col-md-2 mb-2">
+                                <button id="btnExtraer" class="btn btn-outline-secondary w-50">Extraer</button>
+                            </div>
+                            <!-- Botones Excel y PDF -->
+                            <div class="col-md-4 mb-2">
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-outline-success w-25" id="btnReporteExcel">
+                                        <i class="bi bi-file-spreadsheet-fill"></i> Excel
+                                    </button>
+                                    <button type="button" class="btn btn-outline-danger ms-2 w-25" id="btnReportePDF">
+                                        <i class="bi bi-file-pdf-fill"></i> PDF
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <hr>
+        <div class="table-container">
+            <table class="table table-sm" id="datatable" style="width:100%; font-size: 14px;">
+                <thead class="table-dark">
+                    <tr class="fw-bold">
+                        <th>Estudiante</th>
+                        @foreach ($headers as $header)
+                            <th>{{ $header->nombre }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($estudiantes as $estudiante)
+                        <tr>
+                            <td>{{ $estudiante->nombre }}</td>
+                            @foreach ($headers as $header)
+                                <td>{{ $matrizPromedioFinal[$estudiante->nie_estudiante][$header->nombre] }}</td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <script>
     $(function() {
-        $("#gnlError").hide();
-        $("#gnlSuccess").hide();
+        var anio = $("#anio").val();
+        var grado = $("#grado").val();
+        var seccion = $("#seccion").val();
         var total_columns = $("#datatable thead").find("tr")[0].cells.length;
-        var initialLoad = false;
         var table = $('#datatable').DataTable({
             processing: true,
-            serverSide: true,
+            serverSide: false,
             stateSave: true,
             scrollX: false,
+            scrollY: '300px',
             autoWidth: false,
             responsive: true,
-            "dom": "<'row'" +
-                "<'col-sm-12 d-flex align-items-center justify-content-start'l>" +
-                "<'col-sm-12 d-flex align-items-center justify-content-end'f>" +
-                ">" +
-                "<'table-responsive'tr>" +
-                "<'row'" +
-                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
-                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
-                ">",
+            dom: '<"row mb-3"<"col-sm-12 col-md-6"><"col-sm-12 col-md-6 text-md-right text-sm-center"B>>' +
+                '<"row mb-3"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
+                '<"row"<"col-sm-12"t>>' +
+                '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
             language: {
                 url: '{{ asset('Spanish.json') }}'
             },
-            initComplete: function() {
-                table = $('#datatable').DataTable();
-                new $.fn.dataTable.Buttons(table, {
-                    name: 'btnAdd',
-                    buttons: [{
-                        text: 'Agregar',
-                        className: 'ms-10 btn btn-primary add-class'
-                    }]
-                });
-                $('.dataTables_length').empty();
-                table
-                    .buttons('btnAdd', null)
-                    .containers()
-                    .insertBefore('.dataTables_length');
-            },
-            order: [
-                [total_columns - 1, "desc"]
-            ],
-            ajax: '{!! route('materia.index.data') !!}',
-            columns: [
+            buttons: [
                 {
-                    data: 'id',
-                    name: 'id',
-                    className: 'd-none',
+                    extend: 'excelHtml5',
+                    text: '<i class="bi bi-file-excel"></i> Excel',
+                    className: 'btn btn-success d-none',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    customize: function(xlsx) {
+                        var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                        $('row c[r^="A"]', sheet).each(function() {
+                            if ($('is t', this).text().trim() === 'Reportes') {
+                                $('is t', this).text('REPORTE PROMEDIO FINAL\nCOLEGIO LUZ DE ISRAEL\nAÑO: ' + anio + '    GRADO: ' + grado + '    SECCION: ' + seccion);
+                            }
+                        });
+                    }
                 },
                 {
-                    data: 'nombre',
-                    name: 'nombre',
-                },
-                {
-                    data: 'nombre_docente',
-                    name: 'nombre_docente',
-                },
+                    extend: 'pdf',
+                    text: '<i class="bi bi-file-pdf"></i> PDF',
+                    className: 'btn btn-danger d-none',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    title: grado + seccion + ' REPORTE PROMEDIO FINAL',
+                    customize: function(doc) {
+                        doc.defaultStyle.fontSize = 11;
+
+                        // Personalizar el título del documento PDF
+                        doc.content[0].text = 'REPORTE PROMEDIO FINAL\nCOLEGIO LUZ DE ISRAEL\nAÑO: ' + anio + '    GRADO: ' + grado + '    SECCION: ' + seccion;
+                        doc.content[0].alignment = 'center';
+                        doc.content[0].fontSize = 12;
+                        doc.content[0].margin = [0, 0, 0, 10];
+
+                        // Marcar los bordes de la tabla
+                        var table = doc.content[1].table;
+                        for (var i = 0; i < table.body.length; i++) {
+                            var row = table.body[i];
+                            for (var j = 0; j < row.length; j++) {
+                                row[j].style = { cellBorder: '1px solid black' };
+                            }
+                        }
+
+                        // Establecer el estilo de fuente para la tabla
+                        doc.styles.tableBody = { fontSize: 10 };
+                    }
+                }
             ]
         });
-        //Abrir modal para agregar
-        $('body').on('click', '.add-class', function() {
-            $("label.error").hide();
-            $("#FormModal #gnlError").hide();
-            $(".error").removeClass("error");
-
-            $('#FormModal').modal("show");
-            $('#FormModal #modal-body #name').val('');
-
-            $('#FormModal #modal-footer #action_type').val('store');
-            $('#modal-title').text('Agregar Materias');
-            $('#materiaCsv').val('');
+    });
+    $(document).ready(function() {
+        $("#btnReporteExcel").on("click", function() {
+            $(".dt-button.buttons-excel").click();
+            $.ajax({
+                url: "{{ route('reportes.reportepromediofinal.excel') }}",
+                type: 'GET',
+            });
         });
-        //guardar
-        $("#AForm").validate({
-            rules: {
-                materiaCsv: {
-                    "required": true
-                }
-            },
-            messages: {
-                materiaCsv: {
-                    required: "El campo es requerido"
-                }
-            },
-            submitHandler: function(form) {
-                var url = '{{ route('materia.upload.csv') }}';
-                var formData = new FormData(
-                    form); // Crear objeto FormData para enviar el formulario
+        $("#btnReportePDF").on("click", function() {
+            $(".dt-button.buttons-pdf").click();
+            $.ajax({
+                url: "{{ route('reportes.reportepromediofinal.pdf') }}",
+                type: 'GET',
+            });
+        });
+        // Capturar el evento de clic en el botón "Extraer"
+        $("#btnExtraer").on("click", function(event) {
+            event.preventDefault();
+            // Obtener los valores seleccionados en los campos de filtro
+            var anio = $("#anio").val();
+            var grado = $("#grado").val();
+            var seccion = $("#seccion").val();
 
-                $.ajax({
-                    url: url,
-                    method: 'post',
-                    data: formData,
-                    processData: false, // Evitar el procesamiento automático de los datos
-                    contentType: false, // Evitar el establecimiento automático del encabezado Content-Type
-                    success: function(result) {
-                        $('#FormModal').modal('hide');
-                        $('#gnlSuccess').html(result.message);
-                        $('#gnlSuccess').show();
-                        $('#datatable').DataTable().ajax.reload();
-                        setTimeout(function() {
-                            $('#gnlSuccess').hide();
-                        }, 1000);
-                    },
-                    error: function(err) {
-                        if (err.status == 422) {
-                            $.each(err.responseJSON.errors, function(i, error) {
-                                var el = $(document).find('[name="' + i + '"]');
-                                el.after($('<label style="color: red;" class="error">' +
-                                    error[0] + '</label>'));
-                            });
-                        }
-                        if (err.status == 400) {
-                            $('#FormModal #gnlError').html(err.responseJSON.message);
-                            $('#FormModal #gnlError').show();
-                            setTimeout(function() {
-                                $('FormModal #gnlError').hide();
-                            }, 1000);
-                        }
-                    }
-                });
-            },
-
+            // Realizar la solicitud AJAX al servidor
+            $.ajax({
+                url: "{{ route('reportes.reportepromediofinal.index') }}",
+                type: 'GET',
+                data: {
+                    anio: anio,
+                    grado: grado,
+                    seccion: seccion
+                },
+                success: function(response) {
+                    $("#tablaPromedioFinal").replaceWith(response);
+                }
+            });
         });
     });
 </script>

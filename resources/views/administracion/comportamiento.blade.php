@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $titulo}}</title>
+    <title>{{ $titulo }}</title>
 @endsection
 @section('titulo')
 {{ $titulo}}
@@ -9,17 +9,17 @@
 @section('content')
     @component('components.table')
         @slot('thead')
-            <th>NIE</th>
+            <th>ID</th>
+            <th>Tipo</th>
             <th>Nombre</th>
-            <th>Número Lista</th>
-            <th>Grado</th>
-            <th>Sección</th>
+            <th>Valor</th>
+            <th>Mes</th>
         @endslot
     @endcomponent
     @component('components.modal')
         @slot('bodyForm')
-            <label>Estudiante CSV</label>
-            <input type="file" id="estudianteCsv" class="form-control" name="estudianteCsv">
+            <label>Comportamientos CSV</label>
+            <input type="file" id="comportamientoCsv" class="form-control" name="comportamientoCsv">
         @endslot
     @endcomponent
 @endsection
@@ -37,9 +37,15 @@
                 scrollX: false,
                 autoWidth: false,
                 responsive: true,
-                dom:'<"row mb-3"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
-                    '<"row"<"col-sm-12"t>>' +
-                    '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
+                "dom": "<'row'" +
+                    "<'col-sm-12 d-flex align-items-center justify-content-start'l>" +
+                    "<'col-sm-12 d-flex align-items-center justify-content-end'f>" +
+                    ">" +
+                    "<'table-responsive'tr>" +
+                    "<'row'" +
+                    "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                    "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                    ">",
                 language: {
                     url: '{{ asset('Spanish.json') }}'
                 },
@@ -61,28 +67,31 @@
                 order: [
                     [total_columns - 1, "desc"]
                 ],
-                ajax: '{!! route('estudiante.index.data') !!}',
-                columns: [
+                ajax: '{!! route('comportamientos.data') !!}',
+                columns: [{
+                        data: null,
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            var numero = meta.row + 1;
+                            return numero;
+                        }
+                    },
                     {
-                        data: 'nie',
-                        name: 'nie',
+                        data: 'tipo',
+                        name: 'tipo',
                     },
                     {
                         data: 'nombre',
                         name: 'nombre',
                     },
                     {
-                        data: 'numero_lista',
-                        name: 'numero_lista',
+                        data: 'valor',
+                        name: 'valor',
                     },
                     {
-                        data: 'numero',
-                        name: 'numero',
-                    },
-                    {
-                        data: 'seccion',
-                        name: 'seccion',
-                    },
+                        data: 'mes',
+                        name: 'mes',
+                    }
                 ]
             });
             //Abrir modal para agregar
@@ -95,23 +104,23 @@
                 $('#FormModal #modal-body #name').val('');
 
                 $('#FormModal #modal-footer #action_type').val('store');
-                $('#modal-title').text('Agregar Estudiantes');
-                $('#estudianteCsv').val('');
+                $('#modal-title').text('Agregar Comportamientos');
+                $('#comportamientoCsv').val('');
             });
             //guardar
             $("#AForm").validate({
                 rules: {
-                    estudianteCsv: {
+                    comportamientoCsv: {
                         "required": true
                     }
                 },
                 messages: {
-                    estudianteCsv: {
+                    comportamientoCsv: {
                         required: "El campo es requerido"
                     }
                 },
                 submitHandler: function(form) {
-                    var url = '{{ route('estudiante.upload.csv') }}';
+                    var url = '{{ route('comportamiento.upload.csv') }}';
                     var formData = new FormData(
                         form); // Crear objeto FormData para enviar el formulario
 

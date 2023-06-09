@@ -59,30 +59,9 @@
                 scrollX: false,
                 autoWidth: false,
                 responsive: true,
-                "dom": "<'row'" +
-                    "<'col-sm-12 d-flex align-items-center justify-content-start'l>" +
-                   // "<'col-sm-6 d-flex align-items-center justify-content-start'B>" +
-                    "<'col-sm-12 d-flex align-items-center justify-content-end'f>" +
-                    ">" +
-                    "<'table-responsive'tr>" +
-                    "<'row'" +
-                    "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
-                    "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
-                    ">",
-               /* buttons: [{
-                        extend: 'excelHtml5',
-                        text: '<i class="fa fa-file-excel"></i>',
-                        titleAttr: 'Exportar a Excel',
-                        className: 'btn btn-success',
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        text: '<i class="fa fa-file-pdf"></i>',
-                        titleAttr: 'Exportar a PDF',
-                        className: 'btn btn-danger',
-                        orientation: 'landscape',
-                    }
-                ],*/
+                dom:'<"row mb-3"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
+                    '<"row"<"col-sm-12"t>>' +
+                    '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
                 language: {
                     url: '{{ asset('Spanish.json') }}'
                 },
