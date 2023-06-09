@@ -46,14 +46,15 @@
                             <div class="form-group col-md-2 mb-2">
                                 <button id="btnExtraer" class="btn btn-outline-secondary w-50">Extraer</button>
                             </div>
+                            <div class="form-group col-md-2 mb-2"></div>
                             <!-- Botones Excel y PDF -->
-                            <div class="col-md-4 mb-2">
+                            <div class="col-md-2 mb-2">
                                 <div class="d-flex justify-content-end">
                                     <button type="button" class="btn btn-outline-success w-25" id="btnReporteExcel">
-                                        <i class="bi bi-file-spreadsheet-fill"></i> Excel
+                                        <i class="bi bi-file-spreadsheet-fill"></i>
                                     </button>
                                     <button type="button" class="btn btn-outline-danger ms-2 w-25" id="btnReportePDF">
-                                        <i class="bi bi-file-pdf-fill"></i> PDF
+                                        <i class="bi bi-file-pdf-fill"></i>
                                     </button>
                                 </div>
                             </div>
