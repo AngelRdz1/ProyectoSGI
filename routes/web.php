@@ -79,35 +79,32 @@ Route::group(['middleware' => []], function () {
 });
 
 
-Route::view('login', 'login');
-Route::view('dashboard','dashboard'); 
+/*Route::view('login', 'login');
+Route::view('dashboard','dashboard'); */
 
-Route::get('grados/index', [GradoController::class, 'index'])->name('grado.index');
+/*Route::get('grados/index', [GradoController::class, 'index'])->name('grado.index');
 Route::get('grados/index/data', [GradoController::class, 'data'])->name('grados.index.data');
 Route::post('grados/edit', [GradoController::class, 'edit'])->name('grado.edit');
 Route::post('grados/store', [GradoController::class, 'store'])->name('grado.store');
-Route::post('grados/update', [GradoController::class, 'update'])->name('grado.update');
+Route::post('grados/update', [GradoController::class, 'update'])->name('grado.update');*/
 
-Route::get('docente/index', [DocenteController::class, 'index'])->name('docente.index');
+/*Route::get('docente/index', [DocenteController::class, 'index'])->name('docente.index');
 Route::get('docente/index/data', [DocenteController::class, 'data'])->name('docente.index.data');
-Route::post('docente/upload-csv', [DocenteController::class, 'uploadCSV'])->name('docente.upload.csv');
+Route::post('docente/upload-csv', [DocenteController::class, 'uploadCSV'])->name('docente.upload.csv');*/
 
-Route::get('estudiante/index', [EstudianteController::class, 'index'])->name('estudiante.index');
+/*Route::get('estudiante/index', [EstudianteController::class, 'index'])->name('estudiante.index');
 Route::get('estudiante/index/data', [EstudianteController::class, 'data'])->name('estudiante.index.data');
-Route::post('estudiante/upload-csv', [EstudianteController::class, 'uploadCSV'])->name('estudiante.upload.csv');
+Route::post('estudiante/upload-csv', [EstudianteController::class, 'uploadCSV'])->name('estudiante.upload.csv');*/
 
-Route::get('materia/index', [MateriaController::class, 'index'])->name('materia.index');
+/*Route::get('materia/index', [MateriaController::class, 'index'])->name('materia.index');
 Route::get('materia/index/data', [MateriaController::class, 'data'])->name('materia.index.data');
 Route::post('materia/upload-csv', [MateriaController::class, 'uploadCSV'])->name('materia.upload.csv');
 
 Route::get('seguimiento/index', [SeguimientoController::class, 'index'])->name('seguimiento.index');
-Route::get('seguimiento/index/data', [SeguimientoController::class, 'data'])->name('seguimiento.index.data');
+Route::get('seguimiento/index/data', [SeguimientoController::class, 'data'])->name('seguimiento.index.data');*/
 
-Route::get('reportes/index', [ReportesController::class, 'index'])->name('reportes.index'); 
-Route::get('reportes/reportepromediofinal/index', [ReportesController::class, 'indexPromedioFinal'])->name('reportes.reportepromediofinal.index');
+//Route::get('reportes/reportepromediofinal/index', [ReportesController::class, 'indexPromedioFinal'])->name('reportes.reportepromediofinal.index');
 Route::get('reportes/reporteBoletaNotas/index', [ReportesController::class, 'indexBoletaNotas'])->name('reportes.reporteBoletaNotas.index');
 Route::get('reportes/reporteBoletaNotas/data', [ReportesController::class, 'dataBoletaNotas'])->name('reportes.reporteBoletaNotas.data');
 Route::get('reportes/reporteBoletaNotas/tabla', [ReportesController::class, 'tablaBoletaNotas'])->name('reportes.reporteBoletaNotas.tabla');
-Route::get('comportamientos/index', [ComportamientoController::class, 'index'])->name('comportamientos.index');
-Route::get('comportamientos/index/data', [ComportamientoController::class, 'data'])->name('comportamientos.data');
-Route::post('comportamientos/upload-csv', [ComportamientoController::class, 'uploadCSV'])->name('comportamiento.upload.csv');
+

@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RolSeeder::class);
-        $this->call(UserSeeder::class);
+        //$this->call(RolSeeder::class);
+        //$this->call(UserSeeder::class);
         // Crear un registro de docente
         $docente = Docente::create([
             'nombre' => 'Pepe'

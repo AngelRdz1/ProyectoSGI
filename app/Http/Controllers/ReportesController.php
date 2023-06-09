@@ -20,10 +20,6 @@ class ReportesController extends Controller
         return view('reportes.reportes',compact('titulo'));
     }
 
-    public function indexBoletaNotas(Request $request)
-    {
-
-    }
 
     public function indexConsolidado(Request $request)
     {
