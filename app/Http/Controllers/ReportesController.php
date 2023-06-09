@@ -27,7 +27,45 @@ class ReportesController extends Controller
     }
 
     public function indexPromedios(Request $request){
-        
+
+        $anio = $request->anio;
+        $grado = $request->grado;
+        $seccion = $request->seccion;
+        $mes = $request->mes;
+
+        $headers = Materia::getHeaderMateria();
+        $anios = Boleta::getAnios();
+        $grados = Boleta::getGrados();
+        $secciones = Boleta::getSecciones();
+        $notas = Evaluacion::getNotas($anio, $grado, $seccion);
+        $matrizPromedios = array();
+        $estudiantes = array();
+
+        if (count($notas) > 0) {
+            $estudiantes = Evaluacion::getEstudiantes();
+            $matrizPromedios = array();
+
+            foreach ($estudiantes as $estudiante) {
+                $fila = array();
+                $fila['estudiante'] = $estudiante->nombre;
+                foreach ($headers as $header) {
+                    $total = 0;
+                    $contador = 0;
+                    $promedio = 0;
+                    foreach ($notas as $nota) {
+                        if (strtolower($nota->mes) == strtolower($mes) && $nota->nombre_materia == $header->nombre && $nota->nie_estudiante == $estudiante->nie_estudiante) {
+                            $total += $nota->nota;
+                            $contador++;
+                        }
+                    }
+                    $promedio = $contador > 0 ? $total / $contador : 0;
+                    $fila[$header->nombre] = $promedio;
+                }
+                $matrizPromedios[$estudiante->nie_estudiante] = $fila;
+            }
+        }
+
+        return view('reportes.reporte.reportePromedios', compact('headers', 'anios', 'grados', 'secciones', 'matrizPromedios', 'estudiantes', 'request'));
     }
     public function indexBoletaNotas(){
         $titulo = 'Boleta de Notas';
@@ -121,18 +159,60 @@ class ReportesController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-
-    }
-
-
     public function indexPromedioTrimestral(Request $request)
     {
+        $anio = $request->anio;
+        $grado = $request->grado;
+        $seccion = $request->seccion;
+        $trimestre = $request->trimestre;
 
+        $headers = Materia::getHeaderMateria();
+        $anios = Boleta::getAnios();
+        $grados = Boleta::getGrados();
+        $secciones = Boleta::getSecciones();
+        $notas = Evaluacion::getNotas($anio, $grado, $seccion);
+        $matrizPromedioTrimestral = array();
+        $estudiantes = array();
+
+        if (count($notas) > 0) {
+            $estudiantes = Evaluacion::getEstudiantes();
+            $matrizPromedioTrimestral = array();
+
+            foreach ($estudiantes as $estudiante) {
+                $fila = array();
+                $fila['estudiante'] = $estudiante->nombre;
+                foreach ($headers as $header) {
+                    $total = 0;
+                    $contador = 0;
+                    $promedio = 0;
+                    foreach ($notas as $nota) {
+                        if (strtolower($nota->mes) !== 'enero' && $nota->nombre_materia == $header->nombre && $nota->nie_estudiante == $estudiante->nie_estudiante) {
+                            if($trimestre == 1){
+                                if(strtolower($nota->mes) === 'febrero' || strtolower($nota->mes) === 'marzo' || strtolower($nota->mes) === 'abril'){
+                                    $total += $nota->nota;
+                                    $contador++;
+                                }
+                            }else if($trimestre == 2){
+                                if(strtolower($nota->mes) === 'mayo' || strtolower($nota->mes) === 'junio' || strtolower($nota->mes) === 'julio'){
+                                    $total += $nota->nota;
+                                    $contador++;
+                                }
+                            }else if($trimestre == 3){
+                                if(strtolower($nota->mes) === 'agosto' || strtolower($nota->mes) === 'septiembre' || strtolower($nota->mes) === 'octubre'){
+                                    $total += $nota->nota;
+                                    $contador++;
+                                }
+                            }
+                        }
+                    }
+                    $promedio = $contador > 0 ? $total / $contador : 0;
+                    $fila[$header->nombre] = $promedio;
+                }
+                $matrizPromedioTrimestral[$estudiante->nie_estudiante] = $fila;
+            }
+        }
+
+        return view('reportes.reporte.reportePromedioTrimestral', compact('headers', 'anios', 'grados', 'secciones', 'matrizPromedioTrimestral', 'estudiantes', 'request'));
     }
 
     public function indexPromedioFinal(Request $request)

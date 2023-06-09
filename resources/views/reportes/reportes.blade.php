@@ -12,10 +12,13 @@
             <a class="nav-link active menu-reporte" aria-current="page" href="#" data-action="{{ route('reportes.reporteBoletaNotas.index') }}">Boleta de notas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link menu-reporte" href="#" data-action="{{ route('reportes.reportepromediofinal.index') }}">Consolidado</a>
+            <a class="nav-link menu-reporte" href="#" data-action="{{ route('reportes.reporteconsolidado.index') }}">Consolidado</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link menu-reporte" href="#" data-action="{{ route('reportes.reportepromediofinal.index') }}">Promedios</a>
+            <a class="nav-link menu-reporte" href="#" data-action="{{ route('reportes.reportepromedios.index') }}">Promedios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link menu-reporte" href="#" data-action="{{ route('reportes.reportepromediotrimestral.index') }}">Promedio Trimestral</a>
         </li>
         <li class="nav-item">
             <a class="nav-link menu-reporte" href="#" data-action="{{ route('reportes.reportepromediofinal.index') }}">Promedio Final</a>

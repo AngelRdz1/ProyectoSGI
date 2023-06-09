@@ -40,7 +40,7 @@ Route::group(['middleware' => ['LogBitacora']], function () {
 });
 
 //Rutas para cada reporte
-Route::group(['middleware' => []], function () {
+Route::group(['middleware' => ['LogBitacora']], function () {
     Route::get('reportes/reporteboletanotas/index', [ReportesController::class, 'indexBoletaNotas'])->name('reportes.reporteboletanotas.index');
     Route::get('reportes/reporteconsolidado/index', [ReportesController::class, 'indexConsolidado'])->name('reportes.reporteconsolidado.index');
     Route::get('reportes/reportepromedios/index', [ReportesController::class, 'indexPromedios'])->name('reportes.reportepromedios.index');
