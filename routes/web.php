@@ -23,9 +23,12 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome'); uploadCSV
 //});
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
+
+Route::view('login', 'login');
+Route::view('dashboard','dashboard'); 
 
 Route::get('grados/index', [GradoController::class, 'index'])->name('grado.index');
 Route::get('grados/index/data', [GradoController::class, 'data'])->name('grados.index.data');
