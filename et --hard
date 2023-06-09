@@ -1,0 +1,186 @@
+[33mcommit 95fdd82c4fe9498d32cda30b6da7f9884fa1cf95[m[33m ([m[1;36mHEAD -> [m[1;32mMiguel[m[33m)[m
+Author: AngelRdz1 <ar19085@ues.edu.sv>
+Date:   Tue Jun 6 19:04:29 2023 -0600
+
+    merge fix
+
+[33mcommit af5bf486ba412385e77797b74d6e4edf52b2862d[m
+Merge: 4d10731 755e4fc
+Author: AngelRdz1 <ar19085@ues.edu.sv>
+Date:   Tue Jun 6 19:04:10 2023 -0600
+
+    Merge branch 'master' into Miguel
+
+[33mcommit 4d10731267feea239be9105db6044af7928a595e[m
+Author: AngelRdz1 <ar19085@ues.edu.sv>
+Date:   Tue Jun 6 19:00:12 2023 -0600
+
+    avance reporte boleta notas
+
+[33mcommit 755e4fc914e379027047172393f4d829e7ce7540[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: b4338fd 26f5bf3
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Tue Jun 6 18:22:32 2023 -0600
+
+    Merge pull request #9 from AngelRdz1/Gustavo
+    
+    Gustavo
+
+[33mcommit 26f5bf353a80bc37ed6506e318651ad5f2e1ea6f[m[33m ([m[1;31morigin/Gustavo[m[33m)[m
+Merge: 6738e44 b4338fd
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Tue Jun 6 18:22:13 2023 -0600
+
+    Merge branch 'master' into Gustavo
+
+[33mcommit 6738e44c589720462ae6a3f226d72c741acee618[m
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Tue Jun 6 18:22:03 2023 -0600
+
+    Bitacora Ok, solo falta agregar el manejo de los usuarios
+
+[33mcommit b4338fd23c44e23c86cb9f8ef7161471b2293d0b[m
+Merge: 9794cd8 fbe79b1
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Tue Jun 6 16:47:40 2023 -0600
+
+    Merge pull request #8 from AngelRdz1/Gustavo
+    
+    Gustavo
+
+[33mcommit fbe79b16091d154af41a6a35016ad7312a643940[m
+Merge: 2252147 9794cd8
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Tue Jun 6 16:47:21 2023 -0600
+
+    Merge branch 'master' into Gustavo
+
+[33mcommit 22521478c5cece31ff30920d916cca81afaa926d[m
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Tue Jun 6 16:47:05 2023 -0600
+
+    Bitacora en proceso
+
+[33mcommit 9794cd812871bad2e19d44d1d3a46b617f189302[m
+Merge: d42d66f d291d87
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Tue Jun 6 02:20:44 2023 -0600
+
+    Merge pull request #7 from AngelRdz1/Gustavo
+    
+    Reporte Promedio Final Ok
+
+[33mcommit d291d873e0bc388e75a8f7c6b9c4cda6dea3a629[m
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Tue Jun 6 02:19:07 2023 -0600
+
+    Reporte Promedio Final Ok
+
+[33mcommit d42d66f0ebb60659820592ee23fa09d5ced3b054[m
+Merge: cc8716b 801c42d
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Mon Jun 5 02:19:20 2023 -0600
+
+    Merge pull request #6 from AngelRdz1/Gustavo
+    
+    Gustavo
+
+[33mcommit 801c42db87b1f0055d910b2d8672b9d1bafc05d8[m
+Merge: fa85a04 cc8716b
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Mon Jun 5 02:18:58 2023 -0600
+
+    Merge branch 'master' into Gustavo
+
+[33mcommit fa85a040ed71d7543bb4fdb199ff8e40af96b149[m
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Mon Jun 5 02:18:49 2023 -0600
+
+    Formato Reporte Promedio Final Ok, pendiente carga de datos
+
+[33mcommit cc8716ba3b53154b02cc92fd723ea2a509ba05e4[m
+Merge: 3521295 4d5a899
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Sun Jun 4 21:11:44 2023 -0600
+
+    Merge pull request #5 from AngelRdz1/Gustavo
+    
+    Reportes Pantalla Ok
+
+[33mcommit 4d5a899fa57ce09cc3f7a18951e7416690fe3204[m
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Sun Jun 4 21:11:11 2023 -0600
+
+    Reportes Pantalla Ok
+
+[33mcommit 352129578cb92f3f3ff00d7c807eb8087e9d2290[m
+Merge: 8e14816 49e6700
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Sun Jun 4 15:03:40 2023 -0600
+
+    Merge pull request #4 from AngelRdz1/Gustavo
+    
+    Materia y Estudiantes Ok, vista Bitacora Ok
+
+[33mcommit 49e6700da0f338c4354a5e3e47e1ea8ff3dff2cb[m
+Author: GusPD <86135999+GusPD@users.noreply.github.com>
+Date:   Sun Jun 4 15:03:13 2023 -0600
+
+    Materia y Estudiantes Ok, vista Bitacora Ok
+
+[33mcommit 8e1481698e396a5770ede404059161589141ba11[m
+Merge: ae3eee0 9286aa2
+Author: AngelRdz1 <85539536+AngelRdz1@users.noreply.github.com>
+Date:   Sun Jun 4 00:18:31 2023 -0600
+
+    Merge pull request #3 from AngelRdz1/Miguel
+    
+    update titulos
+
+[33mcommit 9286aa216f348cb19f8375038b5586f44737e7d4[m[33m ([m[1;31morigin/Miguel[m[33m)[m
+Author: AngelRdz1 <ar19085@ues.edu.sv>
+Date:   Sun Jun 4 00:17:08 2023 -0600
+
+    update titulos
+
+[33mcommit ae3eee0a0f0090f0d38d17c21a55a5e8e64489d5[m
+Merge: e647a8b f3b80c2
+Author: AngelRdz1 <85539536+AngelRdz1@users.noreply.github.com>
+Date:   Sun Jun 4 00:14:37 2023 -0600
+
+    Merge pull request #2 from AngelRdz1/Miguel
+    
+    update layout
+
+[33mcommit f3b80c288c4fdeecc788d71e1f23e0eb3f9fb533[m
+Author: AngelRdz1 <ar19085@ues.edu.sv>
+Date:   Sun Jun 4 00:13:39 2023 -0600
+
+    update layout
+
+[33mcommit e647a8b6851688d006f8faf5187cf6a51f3ff885[m
+Merge: 77c6e35 b28e061
+Author: AngelRdz1 <85539536+AngelRdz1@users.noreply.github.com>
+Date:   Sat Jun 3 23:58:39 2023 -0600
+
+    Merge pull request #1 from AngelRdz1/Miguel
+    
+    subir archivos csv
+
+[33mcommit b28e061b6f6fb3c8cce53a6ba94a2840de19637e[m
+Author: AngelRdz1 <ar19085@ues.edu.sv>
+Date:   Sat Jun 3 23:58:00 2023 -0600
+
+    subir archivos csv
+
+[33mcommit 77c6e35a307cf2bd18af149c92054609318e0f05[m
+Author: AngelRdz1 <ar19085@ues.edu.sv>
+Date:   Sat Jun 3 22:38:16 2023 -0600
+
+    update
+
+[33mcommit 6ff5149a8bdbefe71a65111b0664277c55881136[m
+Author: AngelRdz1 <ar19085@ues.edu.sv>
+Date:   Sat Jun 3 22:06:13 2023 -0600
+
+    first commit

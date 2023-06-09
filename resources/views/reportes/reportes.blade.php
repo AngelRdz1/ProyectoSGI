@@ -9,7 +9,7 @@
 @section('content')
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link menu-reporte active" aria-current="page" href="#" data-action="{{ route('reportes.reportepromediofinal.index') }}">Boleta de notas</a>
+            <a class="nav-link active menu-reporte" aria-current="page" href="#" data-action="{{ route('reportes.reporteBoletaNotas.index') }}">Boleta de notas</a>
         </li>
         <li class="nav-item">
             <a class="nav-link menu-reporte" href="#" data-action="{{ route('reportes.reportepromediofinal.index') }}">Consolidado</a>

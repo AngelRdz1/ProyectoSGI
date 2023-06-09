@@ -32,7 +32,7 @@
                                     <div class="collapse" id="administracion">
                                         <ul class="collapse show nav flex-column ms-1" data-bs-parent="#administracion">
                                             <li>
-                                                <a href="#" class="nav-link px-2"> <span
+                                                <a href="{{route('docente.index')}}" class="nav-link px-2"> <span
                                                         class="d-none d-sm-inline text-dark">Docentes</span></a>
                                             </li>
                                             <li>
