@@ -25,10 +25,10 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('home');
-});*/
-Route::view('/',"home")->middleware('auth')->name('home');
+});
+//Route::view('/',"home")->middleware('')->name('home');
 
 Route::view('/login',"login.login")->name('login');
 Route::view('/registro',"login.register")->name('registro');
