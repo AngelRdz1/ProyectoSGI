@@ -13,12 +13,10 @@
                 data-action="{{ route('reportes.reporteBoletaNotas.index') }}">Boleta de notas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link menu-reporte" href="#"
-                data-action="{{ route('reportes.reportepromediofinal.index') }}">Consolidado</a>
+            <a class="nav-link menu-reporte" href="#" data-action="{{ route('reportes.reportepromediofinal.index') }}">Consolidado</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link menu-reporte" href="#"
-                data-action="{{ route('reportes.reportepromediofinal.index') }}">Promedios</a>
+            <a class="nav-link menu-reporte" href="#" data-action="{{ route('reportes.reportepromediofinal.index') }}">Promedios</a>
         </li>
         <li class="nav-item">
             <a class="nav-link menu-reporte" href="#"
